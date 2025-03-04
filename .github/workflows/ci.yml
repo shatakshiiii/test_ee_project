@@ -142,11 +142,6 @@ jobs:
           echo "" >> $COMMANDS_FILE
           echo "\`\`\`" >> $COMMANDS_FILE
           podman run -it ${{ env.EE }}:${{ env.IMAGE_TAG }} ansible-navigator --version  >> $COMMANDS_FILE
-          echo "\`\`\`" >> $COMMANDS_FILE
-          echo "" >> $COMMANDS_FILE
-          echo "#### EE Testing with ansible-navigator" >> $COMMANDS_FILE
-          echo "" >> $COMMANDS_FILE
-          echo "\`\`\`" >> $COMMANDS_FILE
           ansible-navigator collections --eei ${{ env.IMAGE_REGISTRY }}/${{ github.repository_owner }}/${{ env.EE }}:${{ env.IMAGE_TAG }} --mode stdout --ce podman --format json 2>&1 | tee -a $COMMANDS_FILE
           echo "\`\`\`" >> $COMMANDS_FILE
           echo "" >> $COMMANDS_FILE

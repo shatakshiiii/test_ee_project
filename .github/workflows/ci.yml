@@ -144,7 +144,7 @@ jobs:
           podman run -it ${{ env.EE }}:${{ env.IMAGE_TAG }} ansible-navigator --version  >> $COMMANDS_FILE
           ansible-navigator collections --eei ${{ env.IMAGE_REGISTRY }}/${{ github.repository_owner }}/${{ env.EE }}:${{ env.IMAGE_TAG }} --mode stdout | tee output.yml
           gzip output.yml
-          zcat output.yml.gz | yq -r '.collections[].known_as' >> $COMMANDS_FILE
+          zcat output.yml.gz | yq -r '.collections[].known_as' 2>/dev/null >> $COMMANDS_FILE || true
           echo "\`\`\`" >> $COMMANDS_FILE
           echo "" >> $COMMANDS_FILE
           echo "#### Ansible version" >> $COMMANDS_FILE

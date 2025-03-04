@@ -147,7 +147,7 @@ jobs:
           echo "#### EE Testing with ansible-navigator" >> $COMMANDS_FILE
           echo "" >> $COMMANDS_FILE
           echo "\`\`\`" >> $COMMANDS_FILE
-          echo "ansible-navigator collections --eei ghcr.io/ansible/community-ansible-dev-tools --mode stdout --pp never  | yq '.collections[].known_as'"  >> $COMMANDS_FILE
+          echo "ansible-navigator collections --eei ${{ env.IMAGE_REGISTRY }}/${{ github.repository_owner }}/${{ env.EE }} --mode stdout --pp missing  | yq '.collections[].known_as'"  >> $COMMANDS_FILE
           echo "\`\`\`" >> $COMMANDS_FILE
           echo "" >> $COMMANDS_FILE
           echo "#### Ansible version" >> $COMMANDS_FILE

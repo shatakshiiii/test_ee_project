@@ -142,7 +142,7 @@ jobs:
           echo "" >> $COMMANDS_FILE
           echo "\`\`\`" >> $COMMANDS_FILE
           podman run -it ${{ env.EE }}:${{ env.IMAGE_TAG }} ansible-navigator --version  >> $COMMANDS_FILE
-          ansible-navigator collections --eei ${{ env.IMAGE_REGISTRY }}/${{ github.repository_owner }}/${{ env.EE }}:${{ env.IMAGE_TAG }} --mode stdout --format json | jq '.collections[].known_as' >> $COMMANDS_FILE
+          ansible-navigator collections --eei ${{ env.IMAGE_REGISTRY }}/${{ github.repository_owner }}/${{ env.EE }}:${{ env.IMAGE_TAG }} --mode stdout --format json --pp missing | jq '.collections[].known_as' >> $COMMANDS_FILE
           echo "\`\`\`" >> $COMMANDS_FILE
           echo "" >> $COMMANDS_FILE
           echo "#### Ansible version" >> $COMMANDS_FILE

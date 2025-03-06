@@ -56,6 +56,9 @@ jobs:
     outputs:
       push_success: ${{ steps.push_to_ghcr.outputs.push_success }}
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
     environment: ${{ github.event_name }}
     steps:
       - name: Checkout repo
